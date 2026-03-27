@@ -1588,14 +1588,27 @@
     sections.forEach(section => observer.observe(section));
 
     // Recruiter mode toggle
-    const toggle = document.getElementById('recruiterToggle');
-    let isOn = false;
+//    const toggle = document.getElementById('recruiterToggle');
+//    let isOn = false;
+//
+//    toggle.addEventListener('click', () => {
+//      isOn = !isOn;
+//      toggle.textContent = `Recruiter Mode: ${isOn ? 'ON' : 'OFF'}`;
+//      toggle.classList.toggle('active');
+//    });
+    // Recruiter mode controlled from code only
+const toggle = document.getElementById('recruiterToggle');
+const recruiterMode = true; // change to false when needed
 
-    toggle.addEventListener('click', () => {
-      isOn = !isOn;
-      toggle.textContent = `Recruiter Mode: ${isOn ? 'ON' : 'OFF'}`;
-      toggle.classList.toggle('active');
-    });
+if (recruiterMode) {
+  toggle.textContent = 'Recruiter Mode: ON';
+  toggle.classList.add('active');
+  document.body.classList.add('recruiter-mode');
+} else {
+  toggle.textContent = 'Recruiter Mode: OFF';
+  toggle.classList.remove('active');
+  document.body.classList.remove('recruiter-mode');
+}
   </script>
 </body>
 </html>
