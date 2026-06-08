@@ -37,10 +37,65 @@
       --radius-md: 22px;
       --radius-lg: 36px;
 
-      --container: 1600px;
+      --container: 1140px;
       --space-4: 1.5rem;
       --space-6: 3rem;
       --section-y: clamp(5.5rem, 9vw, 8rem);
+    }
+
+    /* Light Theme Variables & Overrides */
+    [data-theme="light"] {
+      --bg: #f3f4f6;
+      --bg-elevated: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.7);
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --border: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.15);
+      --border-accent: rgba(255, 0, 25, 0.3);
+      --text: #111827;
+      --text-soft: #374151;
+      --text-muted: #6b7280;
+      --accent: #db0016;
+      --accent-soft: rgba(219, 0, 22, 0.08);
+      --accent-dim: #ff99a2;
+      --accent-glow: rgba(219, 0, 22, 0.2);
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="light"] body::after {
+      filter: invert(1);
+      opacity: 0.03;
+    }
+
+    [data-theme="light"] .contact-input, 
+    [data-theme="light"] .contact-textarea {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text);
+    }
+
+    [data-theme="light"] .info-icon,
+    [data-theme="light"] .skill-icon,
+    [data-theme="light"] .about-tag,
+    [data-theme="light"] .typing-wrap {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="light"] .links-shell, 
+    [data-theme="light"] .contact-shell {
+      background: linear-gradient(180deg, rgba(0,0,0,0.03), transparent);
+    }
+
+    [data-theme="light"] .nav-logo span {
+      color: #000000;
+      text-shadow: none;
+    }
+
+    [data-theme="light"] .nav-inner:hover .nav-logo span {
+      text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="light"] .tl-dot.muted {
+      background: #e5e7eb;
     }
 
     * {
@@ -61,6 +116,7 @@
       line-height: 1.6;
       overflow-x: hidden;
       letter-spacing: 0.02em;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     body::after {
@@ -100,6 +156,41 @@
       width: min(var(--container), calc(100% - 3rem));
       margin-inline: auto;
     }
+
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      top: 25px;
+      left: 25px;
+      z-index: 1000;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 12px 32px var(--accent-glow);
+    }
+
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
     .hero-backdrop {
       position: fixed;
@@ -160,7 +251,7 @@
       -webkit-backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--border-strong);
       border-radius: 999px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
     }
 
     .nav-logo {
@@ -171,7 +262,7 @@
 
     .nav-logo span {
       color: #ffffff;
-      transition: text-shadow 0.3s;
+      transition: text-shadow 0.3s, color 0.3s;
     }
     .nav-inner:hover .nav-logo span {
       text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
@@ -192,7 +283,7 @@
       border-radius: 999px;
       border: 1px solid var(--border-strong);
       color: var(--text-muted);
-      background: rgba(255,255,255,0.01);
+      background: rgba(128,128,128,0.05);
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -402,7 +493,7 @@
     }
 
     .btn {
-      color: #fff;
+      color: #fff !important;
       background: var(--accent);
       border: 1px solid var(--accent);
       box-shadow: 0 12px 32px rgba(255,0,25,0.22);
@@ -496,7 +587,7 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), rgba(255, 0, 25, 0.06), transparent 45%);
+      background: radial-gradient(800px circle at var(--x, 0px) var(--y, 0px), var(--accent-soft), transparent 45%);
       z-index: 1;
     }
 
@@ -705,7 +796,7 @@
     .skill-card:hover, .project-card:hover, .link-card:hover {
       transform: translateY(-6px);
       border-color: var(--border-accent);
-      background-color: rgba(255, 255, 255, 0.015);
+      background-color: var(--accent-soft);
     }
 
     .skill-card.featured {
@@ -900,7 +991,7 @@
     }
     .contact-link-card:hover {
       border-color: var(--border-accent);
-      background-color: rgba(255,255,255,0.01);
+      background-color: var(--accent-soft);
       transform: translateX(6px);
     }
 
@@ -989,6 +1080,12 @@
       :root {
         --nav-h: auto;
       }
+      .theme-toggle {
+        top: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+      }
       nav {
         top: 0;
       }
@@ -1037,6 +1134,12 @@
   <div class="hero-backdrop" aria-hidden="true"></div>
   <div class="hero-orb-1" aria-hidden="true"></div>
   <div class="hero-orb-2" aria-hidden="true"></div>
+
+  <!-- Theme Toggle Button -->
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+    <span class="icon-sun">☀️</span>
+    <span class="icon-moon">🌙</span>
+  </button>
 
   <nav>
     <div class="container nav-inner">
@@ -1447,6 +1550,23 @@
   </footer>
 
   <script>
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const rootElement = document.documentElement;
+
+    // Check localStorage for saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    rootElement.setAttribute('data-theme', savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = rootElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      rootElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Typing Effect Logic
     const phrases = ['Developer', 'Builder', 'Problem Solver', 'Open Source Fan'];
     const el = document.getElementById('typingText');
     let phraseIndex = 0;
@@ -1478,6 +1598,7 @@
     }
     setTimeout(type, 800);
 
+    // Scroll Reveal Logic
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -1489,6 +1610,7 @@
 
     sections.forEach(section => observer.observe(section));
 
+    // Glow Effect Logic
     const cards = document.querySelectorAll('.panel, .project-card, .skill-card, .link-card, .contact-panel, .contact-link-card, .profile-card');
     cards.forEach(card => {
       const glow = document.createElement('div');
@@ -1504,18 +1626,28 @@
       });
     });
 
+    // Recruiter Toggle Logic
     const toggle = document.getElementById('recruiterToggle');
-    const recruiterMode = true; 
+    let recruiterMode = true; 
 
-    if (recruiterMode) {
-      toggle.textContent = 'Recruiter Mode: ON';
-      toggle.classList.add('active');
-      document.body.classList.add('recruiter-mode');
-    } else {
-      toggle.textContent = 'Recruiter Mode: OFF';
-      toggle.classList.remove('active');
-      document.body.classList.remove('recruiter-mode');
+    function updateRecruiterToggle() {
+      if (recruiterMode) {
+        toggle.textContent = 'Recruiter Mode: ON';
+        toggle.classList.add('active');
+        document.body.classList.add('recruiter-mode');
+      } else {
+        toggle.textContent = 'Recruiter Mode: OFF';
+        toggle.classList.remove('active');
+        document.body.classList.remove('recruiter-mode');
+      }
     }
+    
+    updateRecruiterToggle();
+
+    toggle.addEventListener('click', () => {
+      recruiterMode = !recruiterMode;
+      updateRecruiterToggle();
+    });
   </script>
 </body>
 </html>
