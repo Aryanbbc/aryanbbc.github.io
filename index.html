@@ -809,11 +809,6 @@
             margin-bottom: 1.25rem;
         }
 
-        /* 
-           Specific styling for the integrated LinkedIn image icon.
-           It's contained within a stylized rounded badge with a specific 
-           gray-scale filter for initial theme integration.
-        */
         .link-icon-img-wrapper {
             width: 44px; 
             height: 44px;
@@ -1340,13 +1335,7 @@
                         </a>
 
                         <a href="https://linkedin.com/in/aryan-kumar-552412372/" target="_blank" class="link-card">
-                            <!-- 
-                                REPLACED: The generic character icon (🔗) is removed. 
-                                NEW IMAGE: The integrated logo image is inserted below using a placeholder filename.
-                                ACTION REQUIRED: You must have an image file ready to replace this placeholder.
-                            -->
                             <div class="link-icon-img-wrapper">
-                                <!-- Rename your LinkedIn logo image (image_1.png) to this filename and put it in your directory -->
                                 <img src="linkedin-logo.png" alt="LinkedIn Logo" />
                             </div>
                             <div>
@@ -1356,7 +1345,9 @@
                         </a>
 
                         <a href="https://github.com/Aryanbbc/aryan.github.io" target="_blank" class="link-card">
-                            <div class="link-icon">🐙</div>
+                            <div class="link-icon-img-wrapper">
+                                <img src="github-logo.png" alt="GitHub Logo" />
+                            </div>
                             <div>
                                 <div class="link-title">GitHub</div>
                                 <div class="link-sub">Browse my code</div>
@@ -1471,7 +1462,6 @@
 
                 <div class="panel profile-card">
                     <div class="profile-img">
-                        <!-- Source resource swapped from placeholder to image_a71bcc.jpg verbatim -->
                         <img src="image_a71bcc.jpg" alt="Aryan Kumar Profile Snapshot" />
                     </div>
                     <div class="profile-content">
