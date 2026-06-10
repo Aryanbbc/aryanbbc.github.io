@@ -270,8 +270,121 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: calc(var(--nav-h) + 4rem);
+            padding-top: calc(var(--nav-h) + 2rem);
             padding-bottom: 4rem;
+        }
+
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4.5rem;
+            width: 100%;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-terminal-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Scaled and Expanded Terminal Card Styling */
+        .terminal-card {
+            background: #111111;
+            border: 0.5px solid #2a2a2a;
+            border-radius: 12px;
+            max-width: 460px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(255, 26, 26, 0.1);
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #161616;
+            padding: 0.8rem 1.2rem;
+            border-bottom: 0.5px solid #222222;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green { background: #28c840; }
+
+        .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 2;
+            color: var(--text-soft);
+            min-height: 220px; /* Keep height stable during typing */
+        }
+
+        .t-line {
+            margin-bottom: 0.6rem;
+        }
+
+        .t-prompt {
+            color: var(--accent);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .t-command {
+            color: var(--text);
+        }
+
+        .t-output-green {
+            color: #7cd5b4;
+            display: block;
+            padding-left: 22px;
+        }
+
+        .t-output-yellow {
+            color: #f1bf7a;
+            display: block;
+            padding-left: 22px;
+        }
+
+        .t-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: var(--accent);
+            vertical-align: middle;
+            margin-left: 2px;
+            animation: termBlink 1s step-end infinite;
+        }
+
+        @keyframes termBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .eyebrow {
@@ -284,7 +397,7 @@
 
         .hero-name {
             font-family: var(--font-display);
-            font-size: clamp(4rem, 12vw, 11rem);
+            font-size: clamp(4rem, 12vw, 11rem); /* Restored to previous size */
             line-height: 0.85;
             letter-spacing: -0.01em;
             opacity: 0;
@@ -1044,6 +1157,9 @@
             .profile-card {
                 gap: 2rem;
             }
+            .hero-wrapper {
+                gap: 2.5rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1081,6 +1197,15 @@
             }
             #hero {
                 padding-top: 11rem;
+            }
+            .hero-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 3.5rem;
+            }
+            .hero-terminal-side {
+                width: 100%;
+                justify-content: flex-start;
             }
             .hero-stats {
                 gap: 2rem;
@@ -1138,42 +1263,63 @@
     <main>
         <section id="hero">
             <div class="container">
-                <p class="eyebrow">Hello, world — I'm</p>
-                <h1 class="hero-name">ARYAN<span class="dot">.</span></h1>
+                <div class="hero-wrapper">
+                    <!-- Left Side: Copy Elements -->
+                    <div class="hero-content">
+                        <p class="eyebrow">Hello, world — I'm</p>
+                        <h1 class="hero-name">ARYAN<span class="dot">.</span></h1>
 
-                <div class="hero-subtitle">
-                    <span class="badge">CS Student</span>
-                    <span class="typing-wrap">
-                        <span class="typing-text" id="typingText"></span>
-                        <span class="cursor" aria-hidden="true"></span>
-                    </span>
-                </div>
+                        <div class="hero-subtitle">
+                            <span class="badge">CS Student</span>
+                            <span class="typing-wrap">
+                                <span class="typing-text" id="typingText"></span>
+                                <span class="cursor" aria-hidden="true"></span>
+                            </span>
+                        </div>
 
-                <p class="hero-bio">
-                    I'm a <strong>Computer Science student</strong> who loves turning ideas into
-                    fast, functional, and polished digital experiences. From
-                    <strong>data structures</strong> to clean interfaces, I enjoy building things
-                    that feel sharp, useful, and intentional.
-                </p>
+                        <p class="hero-bio">
+                            I'm a <strong>Computer Science student</strong> who loves turning ideas into
+                            fast, functional, and polished digital experiences. From
+                            <strong>data structures</strong> to clean interfaces, I enjoy building things
+                            that feel sharp, useful, and intentional.
+                        </p>
 
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-num">10+</span>
-                        <span class="stat-label">Projects Built</span>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-num">10+</span>
+                                <span class="stat-label">Projects Built</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num">5+</span>
+                                <span class="stat-label">Technologies</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num">∞</span>
+                                <span class="stat-label">Lines of Code</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-cta">
+                            <a href="#projects" class="btn">View Projects</a>
+                            <a href="#contact" class="btn-outline">Contact Me</a>
+                        </div>
                     </div>
-                    <div class="stat">
-                        <span class="stat-num">5+</span>
-                        <span class="stat-label">Technologies</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-num">∞</span>
-                        <span class="stat-label">Lines of Code</span>
-                    </div>
-                </div>
 
-                <div class="hero-cta">
-                    <a href="#projects" class="btn">View Projects</a>
-                    <a href="#contact" class="btn-outline">Contact Me</a>
+                    <!-- Right Side: Expanded / Larger Terminal Card -->
+                    <div class="hero-terminal-side">
+                        <div class="terminal-card">
+                            <div class="terminal-header">
+                                <div class="terminal-dots">
+                                    <div class="terminal-dot dot-red"></div>
+                                    <div class="terminal-dot dot-yellow"></div>
+                                    <div class="terminal-dot dot-green"></div>
+                                </div>
+                                <div class="terminal-title">aryan@portfolio ~</div>
+                            </div>
+                            <!-- Empty body for JavaScript typing effect -->
+                            <div class="terminal-body" id="terminalBody"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="hero-scroll">
@@ -1268,7 +1414,7 @@
                             </div>
 
                             <div class="tl-item">
-                                <span class="tl-dot muted"></span>
+                                <span class="tl-dot"></span>
                                 <div class="tl-content">
                                     <p class="tl-date">2025 — Present</p>
                                     <p class="tl-title">B.Tech Computer Science</p>
@@ -1536,6 +1682,7 @@
     </footer>
 
     <script>
+        // Subtitle Typing Logic
         const phrases = ['Developer', 'Builder', 'Problem Solver', 'Open Source Fan'];
         const el = document.getElementById('typingText');
         let phraseIndex = 0;
@@ -1567,6 +1714,67 @@
         }
         setTimeout(type, 800);
 
+        // Terminal Card Typing Logic
+        const terminalBody = document.getElementById('terminalBody');
+        const termCommands = [
+            {
+                cmd: "whoami",
+                output: '<span class="t-output-green">Aryan — CS Student @ VIT-AP</span>'
+            },
+            {
+                cmd: "skills --list",
+                output: '<span class="t-output-green">Python&nbsp;&nbsp;Java&nbsp;&nbsp;HTML/CSS&nbsp;&nbsp;JS</span><span class="t-output-green">Cybersecurity&nbsp;&nbsp;ML/AI&nbsp;&nbsp;OOP</span>'
+            },
+            {
+                cmd: "status",
+                output: '<span class="t-output-yellow">► Actively building projects</span><span class="t-output-yellow">► Open to internships</span>'
+            }
+        ];
+
+        async function runTerminalAnimation() {
+            terminalBody.innerHTML = ''; // Start clean
+            const sleep = ms => new Promise(res => setTimeout(res, ms));
+
+            // Wait 1.3 seconds so it triggers exactly as the terminal card finishes fading in
+            await sleep(1300); 
+
+            for (const step of termCommands) {
+                // Create a line structure
+                const line = document.createElement('div');
+                line.className = 't-line';
+                line.innerHTML = `<span class="t-prompt">▸</span><span class="t-command"></span><span class="t-cursor"></span>`;
+                terminalBody.appendChild(line);
+
+                const cmdEl = line.querySelector('.t-command');
+                const cursor = line.querySelector('.t-cursor');
+
+                // Simulate human pause before starting to type
+                await sleep(500); 
+
+                // Type out the command letter by letter
+                for (let i = 0; i < step.cmd.length; i++) {
+                    cmdEl.textContent += step.cmd[i];
+                    await sleep(40 + Math.random() * 60); // Random typing delay between 40ms to 100ms
+                }
+
+                // Pause slightly before dropping the output
+                await sleep(350); 
+                cursor.remove(); // Remove active cursor from this line
+                line.insertAdjacentHTML('beforeend', step.output); // Append command output
+            }
+
+            // After all commands run, drop a final empty prompt with a blinking cursor
+            const finalLine = document.createElement('div');
+            finalLine.className = 't-line';
+            finalLine.style.marginBottom = '0';
+            finalLine.innerHTML = `<span class="t-prompt">▸</span><span class="t-cursor"></span>`;
+            terminalBody.appendChild(finalLine);
+        }
+
+        // Call terminal animation
+        runTerminalAnimation();
+
+        // Intersection Observer for scroll animations
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -1578,7 +1786,8 @@
 
         sections.forEach(section => observer.observe(section));
 
-        const cards = document.querySelectorAll('.panel, .project-card, .skill-card, .link-card, .contact-panel, .contact-link-card, .profile-card');
+        // Spotlight effect on cards
+        const cards = document.querySelectorAll('.panel, .project-card, .skill-card, .link-card, .contact-panel, .contact-link-card, .profile-card, .terminal-card');
         cards.forEach(card => {
             const glow = document.createElement('div');
             glow.classList.add('spotlight-glow');
@@ -1593,6 +1802,7 @@
             });
         });
 
+        // Recruiter toggle logic
         const toggle = document.getElementById('recruiterToggle');
         const recruiterMode = true;
 
