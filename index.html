@@ -916,12 +916,11 @@
                     
                     <div class="project-card" data-project-id="autosentinel">
                         <div class="project-visual">
-    <!-- Drop your image in the folder and put the exact file name here -->
-    <img src="autosentinel-image.jpg" alt="AutoSentinel Preview" />
-    <div class="project-hover-overlay">
-        <button class="view-details-btn">View details</button>
-    </div>
-</div>
+                            <img src="autosentinel-image.jpg" alt="AutoSentinel Preview" />
+                            <div class="project-hover-overlay">
+                                <button class="view-details-btn">View details</button>
+                            </div>
+                        </div>
                         <div class="project-content">
                             <h3>AutoSentinel — AI Traffic Enforcement</h3>
                             <p>Full-stack computer vision dashboard that streams live traffic feeds, detects violations locally, and automates citations via secure WebSockets.</p>
@@ -933,19 +932,21 @@
                         </div>
                     </div>
 
-                    <div class="project-card" data-project-id="beta">
+                    <div class="project-card" data-project-id="jarvis">
                         <div class="project-visual">
-                            <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 0.8rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">[ Image Placeholder ]</span>
+                            <img src="jarvis-os-image.jpg" alt="Jarvis OS Preview" />
                             <div class="project-hover-overlay">
                                 <button class="view-details-btn">View details</button>
                             </div>
                         </div>
                         <div class="project-content">
-                            <h3>Project Beta</h3>
-                            <p>A brief description of what this project does and the problem it solves. Replace this text with your next awesome build.</p>
+                            <h3>Jarvis OS — Local AI Operating System</h3>
+                            <p>A local-first AI assistant with voice input, skill routing, Ollama-powered responses, Kokoro TTS, Markdown vault memory, FastAPI backend, and a cinematic React dashboard. The full system runs locally, while the deployed Vercel link shows a dashboard demo preview.</p>
                             <div class="project-tags">
                                 <span class="tag-pill">Python</span>
-                                <span class="tag-pill">Docker</span>
+                                <span class="tag-pill">React</span>
+                                <span class="tag-pill">FastAPI</span>
+                                <span class="tag-pill">Ollama</span>
                             </div>
                         </div>
                     </div>
@@ -1138,14 +1139,14 @@
                 liveLink: "https://autosentinel-tnvc.vercel.app/live",
                 repoLink: "https://github.com/Aryanbbc/autosentinel"
             },
-            "beta": {
-                title: "Project Beta — Backend System",
-                shortDesc: "A brief description of what this project does and the problem it solves. Replace this text with your next awesome build.",
-                longDesc: "This is a placeholder for your second project's detailed paragraph. You can update this dictionary in the script tag at the bottom of the HTML file anytime you build something new!",
-                tags: ["Python", "Docker", "PostgreSQL"],
-                mediaHTML: `<span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 0.8rem;">[ Detailed Image Placeholder ]</span>`,
-                liveLink: "#",
-                repoLink: "#"
+            "jarvis": {
+                title: "Jarvis OS — Local AI Operating System",
+                shortDesc: "A local-first AI assistant with voice input, skill routing, Ollama-powered responses, Kokoro TTS, Markdown vault memory, FastAPI backend, and a cinematic React dashboard. The full system runs locally, while the deployed Vercel link shows a dashboard demo preview.",
+                longDesc: "Jarvis OS is a voice-driven local AI operating system that combines local speech recognition, local text-to-speech, skill-based routing, vault-style memory, and a cinematic dashboard interface. The project was built as an experimental personal AI command center that can listen to user commands, route them to different skills, generate responses using a local LLM through Ollama, speak replies using local TTS, and save outputs into a structured Markdown vault.",
+                tags: ["Python", "React", "FastAPI", "Ollama"],
+                mediaHTML: `<img src="jarvis-os-image.jpg" alt="Jarvis OS Preview" />`,
+                liveLink: "https://jarvis-os-dash-ouh3zyby1-aryanbbcs-projects.vercel.app/",
+                repoLink: "https://github.com/Aryanbbc/jarvis-os"
             }
         };
 
